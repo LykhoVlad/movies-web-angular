@@ -1,0 +1,7 @@
+<div class="page-banner">
+  <div class="image-wrapper">
+    <img [src]="'https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/' + movies[posterId].backdrop_path">
+  </div>
+  <h1 class="page-banner__title">Movies</h1>
+  <input class="search-input" type="text" (keyup.enter)="searching($event)" placeholder="Search movie...">
+</div>

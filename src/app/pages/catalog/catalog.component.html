@@ -1,0 +1,39 @@
+<app-page-banner
+[movies]="moviesList"
+></app-page-banner>
+<div class="movies">
+  <div class="sidebar sidebar-left" [class.show]="filterShow">
+    <div (click)="filterShow = !filterShow" class="sidebar-button">
+      <span>Filter</span>
+    </div>
+    <app-filter
+    [genresArr]="genres"
+    (changeCat)="changeMoviesCategory($event)"
+    (changeSort)="changeMoviesSort()"
+    (filterMoviesList)="filter($event)"
+    ></app-filter>
+  </div>
+  <app-movie-item
+  *ngFor="let movie of moviesList | paginate: { id: 'catalog-movies',
+    itemsPerPage: 20,
+    currentPage: moviesPage,
+    totalItems: collection }"
+  [movie]="movie"
+  [genresArr]="genres"
+  ></app-movie-item>
+  <div class="pagination">
+    <pagination-controls  id="catalog-movies"
+      (pageChange)="pageChanged($event)"
+      (pageBoundsCorrection)="pageChanged($event)"
+      maxSize="9"
+      directionLinks="true"
+      autoHide="true"
+      responsive="true"
+      previousLabel="Previous"
+      nextLabel="Next"
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="moviesPage"
+      screenReaderCurrentLabel="You're on page">
+  </pagination-controls>
+  </div>
+</div>

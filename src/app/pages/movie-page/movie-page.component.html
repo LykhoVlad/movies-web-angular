@@ -1,0 +1,37 @@
+<div class="movie-page">
+  <div class="image-wrapper">
+    <img [src]="'https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/' + details.backdrop_path" alt="">
+  </div>
+  <div class="container">
+    <div class="movie-page__block movie-page__main">
+      <div class="movie-page__main-poster">
+        <img [src]="'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/' + details.poster_path" alt="">
+      </div>
+      <div class="movie-page__main-info">
+        <div class="movie-page__main-info--range">{{ details.vote_average * 10 }}%</div>
+        <h1 class="movie-page__main-info--title">{{ details.title }}</h1>
+        <p class="movie-page__main-info--genres"><span *ngFor="let genre of details.genres">{{ genre.name }} </span></p>
+        <p class="movie-page__main-info--description">{{ details.overview }}</p>
+      </div>
+    </div>
+    <div class="movie-page__block movie-page__credits">
+      <h2>Top Billed Cast</h2>
+      <swiper
+      [slidesPerView]="6"
+      [spaceBetween]="20"
+      (swiper)="onSwiper($event)"
+      (slideChange)="onSlideChange()"
+      >
+        <ng-template *ngFor="let cast of credits.cast" swiperSlide>
+          <div class="movie-page__credits-item">
+            <img *ngIf="cast.profile_path" [src]="'https://www.themoviedb.org/t/p/w138_and_h175_face' + cast.profile_path" alt="">
+            <img *ngIf="!cast.profile_path" src="/assets/img/unknown.png" alt="unknown">
+            <p>{{ cast.original_name }}</p>
+          </div>
+
+        </ng-template>
+      </swiper>
+    </div>
+  </div>
+
+</div>

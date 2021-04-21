@@ -1,0 +1,22 @@
+<header class="header">
+  <div class="container header__block">
+    <a class="header__block-logo" [routerLink]="['/']">Movies</a>
+    <nav class="header__block-navbar">
+      <ul>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a [routerLink]="['/']">Home</a>
+        </li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['/catalog']">Catalog</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="eader__block-auth">
+      <button *ngIf="!login; else logout" mat-raised-button color="accent" (click)="goToAuth()">Login</button>
+      <ng-template #logout>
+        <a [routerLink]="['account']">Account</a>
+        <button  mat-raised-button color="basic" (click)="logOut()">Logout</button>
+      </ng-template>
+    </div>
+  </div>
+</header>

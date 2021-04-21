@@ -1,0 +1,32 @@
+  .header {
+    background: #673ab7;
+    &__block {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &-logo {
+        font-size: 20px;
+        color: yellow;
+        text-decoration: none;
+      }
+      &-navbar {
+        ul {
+          display: flex;
+
+          li {
+            &.active {
+              a {
+                color: yellow;
+              }
+            }
+            a {
+              color: #fff;
+              text-decoration: none;
+
+            }
+          }
+        }
+      }
+    }
+  }
+

@@ -1,0 +1,45 @@
+<div class="filter-block">
+  <h4>Category:</h4>
+  <mat-chip-list
+  class="example-chip"
+  cdkDropList
+  cdkDropListOrientation="horizontal"
+  (cdkDropListDropped)="drop($event)">
+    <mat-chip
+      class="example-box"
+      color="primary"
+      cdkDrag
+      *ngFor="let category of categories"
+      (click)="changeCategory(category.name)">
+      {{category.name}}
+    </mat-chip>
+  </mat-chip-list>
+</div>
+<div class="filter-block">
+  <h4>Sort By:</h4>
+  <mat-form-field appearance="fill">
+    <mat-label>Sorted</mat-label>
+    <mat-select [(value)]="sortBy">
+      <mat-option *ngFor="let sort of sorted" [value]="sort">
+        {{ sort }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="filter-block filter-block__genres">
+  <h4>Genre:</h4>
+  <mat-chip-list
+  class="example-chip"
+  cdkDropList
+  cdkDropListOrientation="horizontal"
+  (cdkDropListDropped)="drop($event)">
+    <mat-chip
+      class="example-box"
+      color="primary"
+      cdkDrag
+      *ngFor="let genre of genresArr"
+      (click)="changeGenre(genre.id)">
+      {{genre.name}}
+    </mat-chip>
+  </mat-chip-list>
+</div>
